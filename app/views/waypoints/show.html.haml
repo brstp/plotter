@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @waypoint.name
+%p
+  %b Latitude:
+  = @waypoint.latitude
+%p
+  %b Longitude:
+  = @waypoint.longitude
+
+= link_to 'Edit', edit_waypoint_path(@waypoint)
+\|
+= link_to 'Back', waypoints_path
