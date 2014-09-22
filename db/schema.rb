@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140918141444) do
+ActiveRecord::Schema.define(version: 20140922104958) do
+
+  create_table "boats", force: true do |t|
+    t.string   "name"
+    t.integer  "period"
+    t.integer  "start_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "waypoints", force: true do |t|
     t.string   "name"
