@@ -41,3 +41,5 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'formtastic'
+gem 'gmaps4rails'
+gem 'underscore-rails'

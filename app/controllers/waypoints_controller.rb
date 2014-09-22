@@ -5,6 +5,25 @@ class WaypointsController < ApplicationController
   # GET /waypoints.json
   def index
     @waypoints = Waypoint.all
+#    @hash = Gmaps4rails.build_markers(@waypoints) do |waypoint, marker, title, icon|
+#      marker.lat waypoint.latitude
+#      marker.lng waypoint.longitude
+#      marker.title waypoint.name
+#    end
+    @hash = Gmaps4rails.build_markers(@waypoints) do |waypoint, marker|
+      marker.lat waypoint.latitude
+      marker.lng waypoint.longitude
+      marker.json({:id => waypoint.name.to_i })
+      #marker.infowindow waypoint.name
+      marker.title waypoint.name
+      marker.picture ({
+       #"url" => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=#{waypoint.name}|FE6256|000000",
+       #"url" => "https://chart.googleapis.com/chart?chst=d_bubble_text_small&chld=bbT|#{URI.encode(waypoint.name)}|ffffff|000000",
+       "url" => "https://chart.googleapis.com/chart?chst=d_map_spin&chld=0.6|000000|ffffff|8|_|#{URI.encode(waypoint.name)}",
+       "width" =>  30,
+       "height" => 36
+       }) 
+    end
   end
 
   # GET /waypoints/1
