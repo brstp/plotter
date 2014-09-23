@@ -43,3 +43,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'formtastic'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'acts_as_list'

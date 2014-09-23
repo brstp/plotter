@@ -1,0 +1,28 @@
+%h1 Listing rounds
+
+%table
+  %tr
+    %th Boat
+    %th Waypoint
+    %th Latitude
+    %th Longitude
+    %th Position
+    %th
+    %th
+    %th
+
+  - @rounds.each do |round|
+    - waypoint = Waypoint.find(round.waypoint_id) 
+    %tr
+      %td= round.boat.name
+      %td= waypoint.name
+      %td= waypoint.latitude
+      %td= waypoint.longitude
+      %td= round.position
+      %td= link_to 'Show', round
+      %td= link_to 'Edit', edit_round_path(round)
+      %td= link_to 'Destroy', round, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Round', new_round_path

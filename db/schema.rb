@@ -11,12 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922104958) do
+ActiveRecord::Schema.define(version: 20140923124856) do
 
   create_table "boats", force: true do |t|
     t.string   "name"
     t.integer  "period"
     t.integer  "start_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rounds", force: true do |t|
+    t.integer  "boat_id"
+    t.integer  "waypoint_id"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

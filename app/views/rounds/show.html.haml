@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Boat:
+  = @round.boat_id
+%p
+  %b Waypoint:
+  = @round.waypoint_id
+%p
+  %b Position:
+  = @round.position
+
+= link_to 'Edit', edit_round_path(@round)
+\|
+= link_to 'Back', rounds_path

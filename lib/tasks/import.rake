@@ -15,5 +15,20 @@ namespace :import do
     end
   end
   
+  task :rounds => :environment do
+    Round.destroy_all
+    CSV.foreach('lib/tasks/rounds.csv', :headers => false) do |row| 
+      boat = Boat.find_by(start_number: row[0])
+      puts boat.name
+      row.shift
+      for round in row do
+        unless round.blank? 
+          waypoint = Waypoint.find_by(name: round)
+          puts "-- #{waypoint.name}"
+          boat.add_round(waypoint)
+        end
+      end
+    end
+  end
       
 end 
