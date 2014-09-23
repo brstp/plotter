@@ -14,6 +14,6 @@ namespace :import do
       Boat.create(row.to_hash)
     end
   end
-    
-  end
+  
+      
 end 

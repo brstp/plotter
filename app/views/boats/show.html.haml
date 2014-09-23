@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @boat.name
+%p
+  %b Period:
+  = @boat.period
+%p
+  %b Start number:
+  = @boat.start_number
+
+= link_to 'Edit', edit_boat_path(@boat)
+\|
+= link_to 'Back', boats_path
