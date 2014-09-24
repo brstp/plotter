@@ -11,9 +11,9 @@ class WaypointsController < ApplicationController
       marker.json({:id => waypoint.name.to_i })
       marker.title waypoint.name
       marker.picture ({
-       "url" => "https://chart.googleapis.com/chart?chst=d_map_spin&chld=0.6|000000|ffffff|8|_|#{URI.encode(waypoint.name)}",
-       "width" =>  30,
-       "height" => 36
+        "url" => "https://chart.googleapis.com/chart?chst=d_map_spin&chld=0.6|000000|ffffff|8|_|#{URI.encode(waypoint.name)}",
+        "width" =>  23,
+        "height" => 41,
        }) 
     end
   end

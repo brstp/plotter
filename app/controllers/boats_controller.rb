@@ -15,6 +15,10 @@ class BoatsController < ApplicationController
                 
       @waypoints = Array.new
       for round in @boat.rounds
+        red = 0
+        green = 0
+        blue = 255
+        color = red.to_s(16) + green.to_s(16) + blue.to_s(16)
         waypoint = Waypoint.find(round.waypoint_id)
         @waypoints << waypoint
         roundpoints << {:lng => waypoint.longitude, :lat => waypoint.latitude}
@@ -29,8 +33,8 @@ class BoatsController < ApplicationController
         marker.title waypoint.name
         marker.picture ({
          "url" => "https://chart.googleapis.com/chart?chst=d_map_spin&chld=0.6|000000|ffffff|8|_|#{URI.encode(waypoint.name)}",
-         "width" =>  30,
-         "height" => 36
+         "width" =>  23,
+         "height" => 41,
          }) 
       end
   end
