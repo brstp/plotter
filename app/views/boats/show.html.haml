@@ -2,29 +2,27 @@
 
 .map-wrapper
   #map
-    apa
-
-
-%h1
-  = @boat.name
-%p
-  %b Period:
-  = @boat.period
-%p
-  %b Start number:
-  = @boat.start_number
-  
-%p
-  %b Start location:
-  = @boat.start_location
-  
-%p
-  %b Trip:
-  = @boat.trip  
-
-= link_to 'Edit', edit_boat_path(@boat)
-\|
-= link_to 'Back', boats_path
+  %div{:class => "alpha60", :id => "boat-data"}
+    %h1
+      = @boat.name
+    %p
+      %b Period:
+      = @boat.period
+    %p
+      %b Start number:
+      = @boat.start_number
+      
+    %p
+      %b Start location:
+      = @boat.start_location
+      
+    %p
+      %b Trip:
+      = @boat.trip  
+    
+    = link_to 'Edit', edit_boat_path(@boat)
+    \|
+    = link_to 'Back', boats_path
 
   
 = render 'map'
