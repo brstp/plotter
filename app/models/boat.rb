@@ -22,7 +22,7 @@ class Boat < ActiveRecord::Base
     return path.strip
   end
   
-  def polyline_points
+  def polyline
     self.rounds.map(&:latlng)
   end
 end
