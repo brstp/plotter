@@ -46,6 +46,8 @@ gem 'underscore-rails'
 gem 'acts_as_list'
 gem 'pg'
 
+gem 'rails_12factor', group: :production
+
 group :development, :test do
   gem 'sqlite3'
 end
