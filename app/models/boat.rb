@@ -10,4 +10,19 @@ class Boat < ActiveRecord::Base
     end
   end
   
+  def start_location
+    Waypoint.find(self.rounds.first.waypoint_id).name
+  end
+  
+  def trip
+    path = ''
+    for round in self.rounds
+      path += round.to_s + " "
+    end
+    return path.strip
+  end
+  
+  def polyline_points
+    self.rounds.map(&:latlng)
+  end
 end

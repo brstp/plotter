@@ -1,7 +1,11 @@
 %p#notice= notice
 
+.map-wrapper
+  #map
+
 %p
-  %b Name:
+  = @polyjson
+%h1
   = @boat.name
 %p
   %b Period:
@@ -9,7 +13,18 @@
 %p
   %b Start number:
   = @boat.start_number
+  
+%p
+  %b Start location:
+  = @boat.start_location
+  
+%p
+  %b Trip:
+  = @boat.trip  
 
 = link_to 'Edit', edit_boat_path(@boat)
 \|
 = link_to 'Back', boats_path
+
+  
+= render 'map'

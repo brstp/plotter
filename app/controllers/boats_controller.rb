@@ -10,6 +10,29 @@ class BoatsController < ApplicationController
   # GET /boats/1
   # GET /boats/1.json
   def show
+      @polyjson = []
+      roundpoints = []
+                
+      @waypoints = Array.new
+      for round in @boat.rounds
+        waypoint = Waypoint.find(round.waypoint_id)
+        @waypoints << waypoint
+        roundpoints << {:lng => waypoint.longitude, :lat => waypoint.latitude}
+      end
+      
+      @polyline = roundpoints #.to_json
+      
+      @hash = Gmaps4rails.build_markers(@waypoints) do |waypoint, marker|
+        marker.lat waypoint.latitude
+        marker.lng waypoint.longitude
+        marker.json({:id => waypoint.name.to_i })
+        marker.title waypoint.name
+        marker.picture ({
+         "url" => "https://chart.googleapis.com/chart?chst=d_map_spin&chld=0.6|000000|ffffff|8|_|#{URI.encode(waypoint.name)}",
+         "width" =>  30,
+         "height" => 36
+         }) 
+      end
   end
 
   # GET /boats/new
