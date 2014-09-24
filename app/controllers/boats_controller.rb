@@ -26,16 +26,26 @@ class BoatsController < ApplicationController
       
       @polyline = roundpoints #.to_json
       
+      red = 0     #00 --> ff
+      green = 153 #99 --> 99
+      blue = 255  #ff --> cc 255-->204
+      steps = @waypoints.count  
       @hash = Gmaps4rails.build_markers(@waypoints) do |waypoint, marker|
+        red_s = ("00" + red.to_s(16)).last 2
+        green_s = ("00" + green.to_s(16)).last 2
+        blue_s = ("00" + blue.to_s(16)).last 2
+        colorcode=red_s + green_s + blue_s
         marker.lat waypoint.latitude
         marker.lng waypoint.longitude
         marker.json({:id => waypoint.name.to_i })
         marker.title waypoint.name
         marker.picture ({
-         "url" => "https://chart.googleapis.com/chart?chst=d_map_spin&chld=0.6|000000|ffffff|8|_|#{URI.encode(waypoint.name)}",
+         "url" => "https://chart.googleapis.com/chart?chst=d_map_spin&chld=0.6|000000|#{colorcode}|8|_|#{URI.encode(waypoint.name)}",
          "width" =>  23,
          "height" => 41,
          }) 
+        red = (red + 255/steps).to_i 
+        blue = (blue - 51/steps).to_i 
       end
   end
 

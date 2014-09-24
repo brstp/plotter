@@ -5,21 +5,20 @@
   %div{:class => "alpha60", :id => "boat-data"}
     %h1
       = @boat.name
-    %p
-      %b Period:
-      = @boat.period
-    %p
-      %b Start number:
-      = @boat.start_number
-      
-    %p
-      %b Start location:
-      = @boat.start_location
-      
-    %p
-      %b Trip:
-      = @boat.trip  
-    
+    .boat-details
+      %p
+        %b Period:
+        = @boat.period
+
+        %b Start number:
+        = @boat.start_number
+        
+        %b Start location:
+        = @boat.start_location
+        
+        %b Trip:
+        = @boat.trip  
+        %b 
     = link_to 'Edit', edit_boat_path(@boat)
     \|
     = link_to 'Back', boats_path

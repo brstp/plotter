@@ -5,16 +5,16 @@
     %th Name
     %th Period
     %th Start number
-    %th
+    %th Trip
     %th
     %th
 
   - @boats.each do |boat|
     %tr
-      %td= boat.name
+      %td= link_to boat.name, boat
       %td= boat.period
       %td= boat.start_number
-      %td= link_to 'Show', boat
+      %td= boat.trip
       %td= link_to 'Edit', edit_boat_path(boat)
       %td= link_to 'Destroy', boat, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
