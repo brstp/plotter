@@ -25,15 +25,32 @@ class BoatsController < ApplicationController
       end
       
       @polyline = roundpoints #.to_json
+      red = 255
+      green = 255
+      blue = 255
       
-      red = 0     #00 --> ff
-      green = 153 #99 --> 99
-      blue = 255  #ff --> cc 255-->204
+      logger.info "*********** #{red}"
+      
+      red_target = "E6".to_i(16)
+      green_target = "2E".to_i(16)
+      blue_target = "00".to_i(16)
+      
+      logger.info "*********** #{red_target}"
+      logger.info "*********** #{green_target}"
+      logger.info "*********** #{blue_target}"
+      
       steps = @waypoints.count  
+
+      red_k = (red_target - red)/steps
+      green_k = (green_target - green)/steps
+      blue_k = (blue_target - blue)/steps
+      
+      
       @hash = Gmaps4rails.build_markers(@waypoints) do |waypoint, marker|
         red_s = ("00" + red.to_s(16)).last 2
         green_s = ("00" + green.to_s(16)).last 2
         blue_s = ("00" + blue.to_s(16)).last 2
+        
         colorcode=red_s + green_s + blue_s
         marker.lat waypoint.latitude
         marker.lng waypoint.longitude
@@ -44,8 +61,9 @@ class BoatsController < ApplicationController
          "width" =>  23,
          "height" => 41,
          }) 
-        red = (red + 255/steps).to_i 
-        blue = (blue - 51/steps).to_i 
+        red = (red + red_k).to_i 
+        green = (green + green_k).to_i
+        blue = (blue + blue_k).to_i 
       end
   end
 
